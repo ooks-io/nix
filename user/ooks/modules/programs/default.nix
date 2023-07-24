@@ -1,0 +1,16 @@
+[
+  ./joshuto/
+  ./kitty/
+  ./lazygit/
+  ./neofetch/
+  ./resource-monitor/
+  ./search/
+  ./starship/
+  ./youtube-tui/
+  ./yt-dlp/ 
+  ./zathura/
+  ./firefox/
+  ./imgview/
+  ./notify/
+  ./mpv/
+]
