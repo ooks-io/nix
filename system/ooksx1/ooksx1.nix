@@ -8,9 +8,15 @@
 # -------------------------------------------------------------------------------------------------
 
 {
-	imports =
-		[ # Include the results of the hardware scan
+	imports = [
+    inputs.hardware.nixosModules.common-pc-ssd
+
 		./hardware-configuration.nix
+    
+    ../common/user/ooks
+    ../common/global/
+
+
 		];
 
 # Bootloader
@@ -47,24 +53,14 @@
 	nixpkgs.system = "x86_64-linux";
 
 
-# Networking
+# Hostname and networking
 # -------------------------------------------------------------------------------------------------
 
 	networking = {
-		hostName = "ooksthink"; # Define your hostname.
-		networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+		hostName = "ooksthink"; 		
+    networkmanager.enable = true;
 		};
 
-
-# Time Zone
-# -------------------------------------------------------------------------------------------------
-
-	time.timeZone = "Pacific/Auckland";
-
-# Localization
-# -------------------------------------------------------------------------------------------------
-
-	i18n.defaultLocale = "en_US.UTF-8";
 
 # X Server
 # -------------------------------------------------------------------------------------------------
@@ -90,7 +86,7 @@
 # Printing
 # -------------------------------------------------------------------------------------------------
 
-	# services.printing.enable = true;
+  services.printing.enable = true;
 
 # Sound
 # -------------------------------------------------------------------------------------------------
@@ -103,76 +99,23 @@
 
 	# services.xserver.libinput.enable = true;
 
-# User
+# Laptop Programs
 # -------------------------------------------------------------------------------------------------
 
-	users.users = {
-		ooks = {
-			isNormalUser = true;
-			extraGroups = [ "wheel" ];
-			shell = pkgs.fish;
+  powerManagement.powertop.enable = true;
+  programs = {
+    light.enable = true;
+    dconf.enable = true;
+    kdeconnect.enable = true;
+  };
 
-# User Packages
-# -------------------------------------------------------------------------------------------------
+# XDG Portal
+# ------------------------------------------------------------------------------------------------
 
-  			packages = with pkgs; [
-  				firefox
-  				tree
- 				hyprland
- 				kitty
-    				];
-  			};
-		};
-
-# System Environment
-# -------------------------------------------------------------------------------------------------
-
-	environment = {
-		binsh = "${pkgs.dash}/bin/dash";
-		shells = with pkgs; [ fish ];
-		systemPackages = with pkgs; [
-		#	Editor
-		#	------
-			neovim
-		#	Utility
-		#	------
-			wget
-			dash
-			neofetch
-			glib
-			xdg-utils
-			pciutils
-			gdb
-			killall
-			jetbrains-mono
-			cargo
-			p7zip
-			joshuto
-			zip
-			rar
-			btop
-			git
-			libnotify
-			dunst
-			wl-clipboard
-			wlr-randr
-			wayland
-			wayland-scanner
-			wayland-utils
-			egl-wayland
-			wayland-protocols
-			wev
-			alsa-lib
-			alsa-utils
-			flac
-			pulsemixer
-			linux-firmware
-			lxappearance
-			pkgs.sway-contrib.grimshot
-			flameshot
-			grim
-  			];
-	};
+xdg.portal = {
+  enable = true;
+  wlr.enable = true;
+};
 
 # Fonts
 # -------------------------------------------------------------------------------------------------
@@ -189,30 +132,16 @@ fonts.fonts = with pkgs; [
 		enable = true;
 		enableSSHSupport = true;
  		};
-  	programs.hyprland = {
-		enable = true;
-		xwayland.enable = true;
- 		};   
-	programs.fish = {
-		enable = true;
-		};
 
 # Services
 # -------------------------------------------------------------------------------------------------
 
-	security.rtkit.enable = true;
-
 	services = {
-		pipewire = {
-			enable = true;
-			alsa.enable = true;
-			alsa.support32Bit = true;
-			pulse.enable = true;
-			jack.enable = true;
-			wireplumber.enable = true;
 		};
-		dbus.packages = [ pkgs.gcr ];
-		getty.autologinUser = "ooks";
+		dbus = {
+      enable = true;
+      packages = [ pkgs.gcr ];
+    };
 		auto-cpufreq = {
 			enable = true;
 			settings = {
@@ -244,18 +173,6 @@ fonts.fonts = with pkgs; [
 				};
 			};
 		};
-
-# Security
-# -------------------------------------------------------------------------------------------------
-
-	security.polkit.enable = true;
-	security.sudo = {
-		enable = true;
-		extraConfig = ''
-			ooks ALL=(ALL) NOPASSWD:ALL
-			'';
-			};
-			
 
 # D-Bus
 # -------------------------------------------------------------------------------------------------
