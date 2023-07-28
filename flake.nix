@@ -3,42 +3,34 @@
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         home-manager.url = "github:nix-community/home-manager";
         home-manager.inputs.nixpkgs.follows = "nixpkgs";
+        hardware.url = "github:nixos/nixos-hardware";
         nix-colors.url = "github:misterio77/nix-colors";
     };
 
-    outputs = {  nixpkgs, home-manager, ... }:
+    outputs = {   self, nixpkgs, home-manager, ... }:
     let
-        system = "x86_64-linux";
-        pkgs = import nixpkgs {
-            inherit system;
-            config = {
-                allowUnfree = true;
-            };
-        };
+      system = "x86_64-linux";
+      lib = nixpkgs.lib // home-manager.lib;
+      pkgsFor = nixpkgs.legacyPackages;
     in
     {
-        homeConfigurations = {
-            ooks = home-manager.lib.homeManagerConfiguration {
-                pkgs = nixpkgs.legacyPackages.x86_64-linux;
-                extraSpecialArgs = { inherit inputs outputs; };
-                modules = [
-                    ./home/ooks/home.nix 
-                ];
-            };
+      inherit lib;
+      nixosConfigurations = {
+        # X1 Carbon
+        ooksx1 =  lib.nixosSystem {
+          inherit system;
+          modules = [ ./system/ooksx1/ ];
+          specialArgs = { inherit inputs outputs; };
         };
-        nixosConfigurations = {
-            ooksthink = nixpkgs.lib.nixosSystem {
-                inherit system;
-                modules = [
-                    ./systems/laptop/laptop.nix
-                ];
-            };
-            ooksdesk = nixpkgs.lib.nixosSystem {
-                inherit system;
-                modules = [
-                    ./systems/desktop/configuration.nix
-                ];
-            };
+      };
+      homeConfigurations = {
+        # X1 Carbon
+        "ooks@ooksx1" = lib.homeManagerConfiguration {
+          inherit system;
+          modules = [ ./home/ooks/ooksx1.nix ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
         };
+      };    
     };
 }
