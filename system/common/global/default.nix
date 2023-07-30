@@ -7,6 +7,7 @@
     ./security.nix
     ./systemdboot.nix
     ./pipewire.nix
+  # ./auto-upgrade.nix # still needs some work
     ] ++ (builtins.attrValues outputs.nixosModules);
 
   home-manager.extraSpecialArgs = { inherit inputs outputs; };
