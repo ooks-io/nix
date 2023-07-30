@@ -2,7 +2,7 @@
 
 
 
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 # Imports
 # -------------------------------------------------------------------------------------------------
@@ -10,94 +10,38 @@
 {
 	imports = [
     inputs.hardware.nixosModules.common-pc-ssd
+    inputs.hardware.nixosModules.common-cpu-intel
+    inputs.hardware.nixosModules.common-gpu-intel
 
 		./hardware-configuration.nix
     
     ../common/user/ooks
     ../common/global/
-
+    ../common/opt/bluetooth.nix
 
 		];
-
-# Bootloader
-# -------------------------------------------------------------------------------------------------
-
-	boot.loader.systemd-boot.enable = true;
-	boot.loader.efi.canTouchEfiVariables = true;
-
-
-# Nix Settings
-# -------------------------------------------------------------------------------------------------
-
-	nix = {
-		settings = {
-			auto-optimise-store = true;
-			experimental-features = "nix-command flakes";
-			};
-		
-
-# Garbage Collection
-# -------------------------------------------------------------------------------------------------
-
-	gc = {
-		automatic = true;
-		dates = "weekly";
-		options = "--delete-older-than 2d";
-		};
-	};
-
-# System Architecture
-# -------------------------------------------------------------------------------------------------
-
-
-	nixpkgs.system = "x86_64-linux";
-
 
 # Hostname and networking
 # -------------------------------------------------------------------------------------------------
 
 	networking = {
-		hostName = "ooksthink"; 		
+		hostName = "ooksx1"; 		
     networkmanager.enable = true;
 		};
 
-
-# X Server
-# -------------------------------------------------------------------------------------------------
-
-	services.xserver = {
-		 enable = true;
-		 displayManager = {
-		 	defaultSession = null;
-			startx.enable = true;
-			};
-	# displayManager.gdm = { 
-	# enable = true;
-	# wayland = true;
-	# };
-};
-
-# X11 Keymap
-# -------------------------------------------------------------------------------------------------
-
-	# services.xserver.layout = "us";
-	# services.xserver.xkbOptions = "eurosign:e,caps:escape";
 
 # Printing
 # -------------------------------------------------------------------------------------------------
 
   services.printing.enable = true;
 
-# Sound
-# -------------------------------------------------------------------------------------------------
+# Kernel
+# ------------------------------------------------------------------------------------------------
 
-	sound.enable = false;
-	hardware.pulseaudio.enable = false;
+  boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_zen;
+  };
 
-# Touchpad
-# -------------------------------------------------------------------------------------------------
-
-	# services.xserver.libinput.enable = true;
 
 # Laptop Programs
 # -------------------------------------------------------------------------------------------------
@@ -112,32 +56,26 @@
 # XDG Portal
 # ------------------------------------------------------------------------------------------------
 
-xdg.portal = {
-  enable = true;
-  wlr.enable = true;
-};
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+  };
 
-# Fonts
+# gnupg
 # -------------------------------------------------------------------------------------------------
 
-fonts.fonts = with pkgs; [
-	(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-	];
-
-# Programs
-# -------------------------------------------------------------------------------------------------
-
-	programs.mtr.enable = true;
 	programs.gnupg.agent = {
 		enable = true;
 		enableSSHSupport = true;
- 		};
+ 	};
 
 # Services
 # -------------------------------------------------------------------------------------------------
 
 	services = {
-		};
+    logind = {
+      lidSwitch = "suspend";
+    };
 		dbus = {
       enable = true;
       packages = [ pkgs.gcr ];
@@ -152,11 +90,10 @@ fonts.fonts = with pkgs; [
 				charger = {
 					governor = "performance";
 					turbo = "auto";
-					};
 				};
 			};
-
-	};	
+		};
+  };	
 
 	systemd = {
 		user.services.polkit-gnome-authentication-agent-1 = {
@@ -170,14 +107,9 @@ fonts.fonts = with pkgs; [
 				Restart = "on-failure";
 				RestartSec = 1;
 				TimeoutStopSec = 10;
-				};
 			};
 		};
-
-# D-Bus
-# -------------------------------------------------------------------------------------------------
-
-	services.dbus.enable = true;
+	};
 
 # Firewall
 # -------------------------------------------------------------------------------------------------
