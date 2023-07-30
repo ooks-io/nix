@@ -20,7 +20,8 @@
     };
   };
     
+    
   hardware.enableRedistibutableFirmware = true;
-
+  environment.enableAllTerminfo = true;
 
   }
