@@ -20,4 +20,8 @@
     nix-inspect # See which pkgs are in your PATH
     comma # Install and run with ","
   ];
+
+  programs = {
+    fzf.enable = true;
+  };
 }
