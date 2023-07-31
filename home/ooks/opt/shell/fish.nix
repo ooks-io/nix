@@ -37,6 +37,7 @@ in
       fish_greeting = "";
     };
       # kitty integration
+    interactiveShellInit =
       ''
         set --global KITTY_INSTALLATION_DIR "${pkgs.kitty}/lib/kitty"
         set --global KITTY_SHELL_INTEGRATION enabled

@@ -11,14 +11,13 @@
   xdg.mimeApps.enable = true;
   home.packages = with pkgs; [
     grim
-    mkv
+    mpv
     gtk3
     pulseaudio
     slurp
     wf-recorder
     wl-clipboard
     wl-mirror
-    wl-mirror-pick
     xdg-utils
     ydotool
   ];

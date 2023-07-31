@@ -4,13 +4,8 @@
     ../standard/wayland
 
     ./tty-init.nix
-    ./basic-binds.nix
-    ./systemd-fixes.nix
-  ];
-
-  home.packages = with pkgs; [
-    inputs.hyprwm-contrib.grimblast
-    hyprslurp
+    ./binds.nix
+    ./systemd-fix.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -74,7 +69,7 @@
       };
 
       exec = [
-        need to fix "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/walls/everforest/megacity.png --mode fill"
+        "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/walls/everforest/megacity.png --mode fill"
       ];
     };
   };

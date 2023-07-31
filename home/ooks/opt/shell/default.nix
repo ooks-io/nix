@@ -18,7 +18,6 @@
     diffsitter # Better diff
     jq # JSON pretty printer and manipulator
     lazygit
-    nix-inspect # See which pkgs are in your PATH
     comma # Install and run with ","
     btop
   ];

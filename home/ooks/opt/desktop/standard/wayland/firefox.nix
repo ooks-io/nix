@@ -4,6 +4,7 @@ let
   addons = inputs.firefox-addons.packages.${pkgs.system};
 in
 {
+  nixpkgs.config.allowUnfree = true;
   programs.browserpass.enable = true;
   programs.firefox = {
     enable = true;
@@ -12,7 +13,6 @@ in
       extensions = with addons; [
         ublock-origin
         browserpass
-        onepassword-password-manager
         stylus
         surfingkeys
       ];

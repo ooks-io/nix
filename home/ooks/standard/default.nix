@@ -5,9 +5,8 @@ in
 {
   imports = [
     inputs.nix-colors.homeManagerModule
-    ../modules/common/
-    ../modules/feature/shell/
-    ../modules/feature/nvim/
+    ../opt/shell
+    ../opt/nvim
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
@@ -39,7 +38,6 @@ in
     stateVersion = lib.mkDefault "22.05";
     sessionPath = [ "$HOME/.local/bin" ];
     };
-  };
 
   colorscheme = lib.mkDefault colorSchemes.everforest;
   home.file.".colorscheme".text = config.colorscheme.slug;

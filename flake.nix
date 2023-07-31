@@ -29,8 +29,6 @@
 
       homeManagerModules = import ./modules/home-manager;
 
-      wallpapers = import ./home/ooks/wallpapers
-
       nixosConfigurations = {
         # X1 Carbon
         ooksx1 =  lib.nixosSystem {
