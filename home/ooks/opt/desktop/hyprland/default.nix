@@ -74,87 +74,8 @@
       };
 
       exec = [
-       # need to fix "${pkgs.swaybg}/bin/swaybg -i --mode fill"
+        need to fix "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/walls/everforest/megacity.png --mode fill"
       ];
-
-      bind = let
-        playerctl = "${config.services.playerctld.package}/bin/playerctl";
-        playerctld = "${config.services.playerctld.package}/bin/playerctld";
-        makoctl = "${config.services.mako.package}/bin/makoctl";
-
-        grimblast = "${pkgs.inputs.hyprwm-contrib.grimblast}/bin/grimblast";
-        pactl = "${pkgs.pulseaudio}/bin/pactl";
-
-        gtk-launch = "${pkgs.gtk3}/bin/gtk-launch";
-        xdg-mime = "${pkgs.xdg-utils}/bin/xdg-mime";
-        defaultApp = type: "${gtk-launch} $(${xdg-mime} query default ${type})";
-
-        terminal = config.home.sessionVariables.TERMINAL;
-        browser = defaultApp "x-scheme-handler/https";
-        editor = defaultApp "text/plain";
-      in [
-        # Program bindings
-        "SUPER,Return,exec,${terminal}"
-        "SUPER,e,exec,${editor}"
-        "SUPER,b,exec,${browser}"
-        # Brightness control (only works if the system has lightd)
-        ",XF86MonBrightnessUp,exec,light -A 10"
-        ",XF86MonBrightnessDown,exec,light -U 10"
-        # Volume
-        ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
-        ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
-        ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
-        "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
-        ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
-        # Screenshotting
-        ",Print,exec,${grimblast} --notify copy output"
-        "SHIFT,Print,exec,${grimblast} --notify copy active"
-        "CONTROL,Print,exec,${grimblast} --notify copy screen"
-        "SUPER,Print,exec,${grimblast} --notify copy window"
-        "ALT,Print,exec,${grimblast} --notify copy area"
-      ] ++
-
-      (lib.optionals config.services.playerctld.enable [
-        # Media control
-        ",XF86AudioNext,exec,${playerctl} next"
-        ",XF86AudioPrev,exec,${playerctl} previous"
-        ",XF86AudioPlay,exec,${playerctl} play-pause"
-        ",XF86AudioStop,exec,${playerctl} stop"
-        "ALT,XF86AudioNext,exec,${playerctld} shift"
-        "ALT,XF86AudioPrev,exec,${playerctld} unshift"
-        "ALT,XF86AudioPlay,exec,systemctl --user restart playerctld"
-      ]) ++
-      # Screen lock
-      (lib.optionals config.programs.swaylock.enable [
-        ",XF86Launch5,exec,${swaylock} -S"
-        ",XF86Launch4,exec,${swaylock} -S"
-        "SUPER,backspace,exec,${swaylock} -S"
-      ]) ++
-      # Notification manager
-      (lib.optionals config.services.mako.enable [
-        "SUPER,w,exec,${makoctl} dismiss"
-      ]) ++
-
-
-      monitor = map (m: let
-        resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
-        position = "${toString m.x}x${toString m.y}";
-      in
-        "${m.name},${if m.enabled then "${resolution},${position},1" else "disable"}"
-      ) (config.monitors);
-
-      workspace = map (m:
-        "${m.name},${m.workspace}"
-      ) (lib.filter (m: m.enabled && m.workspace != null) config.monitors);
-
     };
-    # This is order sensitive, so it has to come here.
-    extraConfig = ''
-      # Passthrough mode (e.g. for VNC)
-      bind=SUPER,P,submap,passthrough
-      submap=passthrough
-      bind=SUPER,P,submap,reset
-      submap=reset
-    '';
   };
 }

@@ -22,7 +22,7 @@
   };
     
     
-  hardware.enableRedistibutableFirmware = true;
+  #hardware.enableRedistibutableFirmware = true;
   environment.enableAllTerminfo = true;
 
   }
