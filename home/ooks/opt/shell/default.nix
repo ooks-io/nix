@@ -19,6 +19,7 @@
     jq # JSON pretty printer and manipulator
     nix-inspect # See which pkgs are in your PATH
     comma # Install and run with ","
+    btop
   ];
 
   programs = {
