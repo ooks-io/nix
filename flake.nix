@@ -28,7 +28,7 @@
         # X1 Carbon
         ooksx1 =  lib.nixosSystem {
           inherit system;
-          modules = [ ./system/ooksx1/ ];
+          modules = [ ./system/ooksx1 ];
           specialArgs = { inherit inputs outputs; };
         };
       };
