@@ -1,10 +1,16 @@
 {
     inputs = {
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        home-manager.url = "github:nix-community/home-manager";
-        home-manager.inputs.nixpkgs.follows = "nixpkgs";
-        hardware.url = "github:nixos/nixos-hardware";
-        nix-colors.url = "github:misterio77/nix-colors";
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+      home-manager.url = "github:nix-community/home-manager";
+      home-manager.inputs.nixpkgs.follows = "nixpkgs";
+      hardware.url = "github:nixos/nixos-hardware";
+      nix-colors.url = "github:misterio77/nix-colors";
+
+      firefox-addons = {
+    url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    inputs.nixpkgs.follows = "nixpkgs";
+      };
+
     };
 
     outputs = {   self, nixpkgs, home-manager, ... }:@inputs:

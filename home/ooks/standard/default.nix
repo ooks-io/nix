@@ -5,8 +5,9 @@ in
 {
   imports = [
     inputs.nix-colors.homeManagerModule
-    ../modules/editors/nvim/
     ../modules/common/
+    ../modules/feature/shell/
+    ../modules/feature/nvim/
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
