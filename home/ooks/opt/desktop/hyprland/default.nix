@@ -13,8 +13,8 @@
 
     settings = {
       general = {
-        gaps_in = 15;
-        gaps_out = 20;
+        gaps_in = 10;
+        gaps_out = 10;
         border_size = 2;
         cursor_inactive_timeout = 4;
         "col.active_border" = "0xff${config.colorscheme.colors.base0C}";
@@ -30,8 +30,8 @@
       misc.vfr = "on";
 
       decoration = {
-        active_opacity = 0.94;
-        inactive_opacity = 0.84;
+        active_opacity = 1.0;
+        inactive_opacity = 1.0;
         fullscreen_opacity = 1.0;
         rounding = 5;
         blur = true;
