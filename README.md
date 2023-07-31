@@ -1,0 +1,2 @@
+# Personal nix config
+
