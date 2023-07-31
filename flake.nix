@@ -27,7 +27,6 @@
       nixosConfigurations = {
         # X1 Carbon
         ooksx1 =  lib.nixosSystem {
-          inherit system;
           modules = [ ./system/ooksx1 ];
           specialArgs = { inherit inputs outputs; };
         };
@@ -35,7 +34,6 @@
       homeConfigurations = {
         # X1 Carbon
         "ooks@ooksx1" = lib.homeManagerConfiguration {
-          inherit system;
           modules = [ ./home/ooks/ooksx1.nix ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
