@@ -13,8 +13,9 @@
 
     };
 
-    outputs = {   self, nixpkgs, home-manager, ... }:
+    outputs = { self, nixpkgs, home-manager, ... }:
     let
+      inherit (self) outputs;
       system = "x86_64-linux";
       lib = nixpkgs.lib // home-manager.lib;
       pkgsFor = nixpkgs.legacyPackages;
