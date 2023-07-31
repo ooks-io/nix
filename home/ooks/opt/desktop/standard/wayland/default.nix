@@ -11,6 +11,9 @@
   xdg.mimeApps.enable = true;
   home.packages = with pkgs; [
     grim
+    libnotify
+    linux-firmware
+    pkgs.qt6.qtwayland
     mpv
     gtk3
     pulseaudio
