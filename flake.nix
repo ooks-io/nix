@@ -7,10 +7,14 @@
       nix-colors.url = "github:misterio77/nix-colors";
 
       firefox-addons = {
-    url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-    inputs.nixpkgs.follows = "nixpkgs";
+        url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
-
+      
+      hyprwm-contrib = {
+        url = "github:hyprwm/contrib";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -24,6 +28,8 @@
       inherit lib;
 
       homeManagerModules = import ./modules/home-manager;
+
+      wallpapers = import ./home/ooks/wallpapers
 
       nixosConfigurations = {
         # X1 Carbon
