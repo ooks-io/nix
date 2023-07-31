@@ -3,7 +3,7 @@ let ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.
 in
 {
   users.users.ooks = {
-    isNormalUser = true
+    isNormalUser = true;
     shell = pkgs.fish;
     extraGroups = [
     "wheel"
@@ -19,6 +19,8 @@ in
   packages = [ pkgs.home-manager ];
   };
 
-  home-manager.users.ooks = import ../../../../home/ooks/${config.networking.hostName}
+  home-manager.users.ooks = import ../../../../home/ooks/${config.networking.hostName}.nix;
+
+  services.geoclue2.enable = true;
 
 }

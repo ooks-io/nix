@@ -20,7 +20,7 @@
       extraConfig = ''
         ooks ALL=(ALL) NOPASSWD:ALL
         '';
-    }
+    };
   };
 
   systemd = {

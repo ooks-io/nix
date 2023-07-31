@@ -16,7 +16,7 @@
 		./hardware-configuration.nix
     
     ../common/user/ooks
-    ../common/global/
+    ../common/global
     ../common/opt/bluetooth.nix
 
 		];

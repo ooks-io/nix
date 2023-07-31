@@ -13,7 +13,7 @@
 
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }:
+    outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
       system = "x86_64-linux";
@@ -28,7 +28,7 @@
       nixosConfigurations = {
         # X1 Carbon
         ooksx1 =  lib.nixosSystem {
-          modules = [ ./system/ooksx1 ];
+          modules = [ ./system/ooksx1/ooksx1.nix ];
           specialArgs = { inherit inputs outputs; };
         };
       };
