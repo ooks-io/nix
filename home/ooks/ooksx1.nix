@@ -13,7 +13,5 @@
   home.username = "ooks";
   home.homeDirectory = "/home/ooks";
 
-  home.stateVersion = "23.05"; # Please read the comment before changing.
-
   programs.home-manager.enable = true;
 }

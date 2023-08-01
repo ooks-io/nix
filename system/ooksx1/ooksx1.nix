@@ -60,6 +60,12 @@
     enable = true;
     wlr.enable = true;
   };
+  
+  hardware = {
+    opengl = {
+      enable = true;
+    };
+  };
 
 # gnupg
 # -------------------------------------------------------------------------------------------------
@@ -127,7 +133,7 @@
 			enable = false;
 			channel = "https://nixos.org/channels/nix-unstable";
 			};
-		stateVersion = "23.11";
+		stateVersion = "22.05";
 		copySystemConfiguration = false;
 	};
 }

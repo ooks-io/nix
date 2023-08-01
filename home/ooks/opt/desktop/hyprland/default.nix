@@ -3,9 +3,10 @@
     ../standard
     ../standard/wayland
 
-    ./tty-init.nix
+    #./tty-init.nix
     ./binds.nix
-    ./systemd-fix.nix
+    #./systemd-fix.nix
+    ../env/hypr-variable.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -66,6 +67,10 @@
           "fadeDim,1,3,easeout"
           "border,1,3,easeout"
         ];
+	
+	monitor = [
+	  ",prefered,auto,auto"
+	];
       };
 
       exec = [
