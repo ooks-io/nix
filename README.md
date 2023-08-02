@@ -3,5 +3,5 @@
 
 TODO:
 
-- sops ([]) 
-- impermanence ([]) 
+- [ ] sops
+- [ ] impermanence
