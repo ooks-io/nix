@@ -25,7 +25,7 @@ in
       shell_integration = "no-rc";
       scrollback_lines = 4000;
       scrollback_pager_history_size = 2048;
-      window_padding_width = 5;
+      window_padding_width = 1;
       foreground = "#${colors.base05}";
       background = "#${colors.base00}";
       background_opacity = "1.0";

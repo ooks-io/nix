@@ -20,6 +20,7 @@
     lazygit
     comma # Install and run with ","
     btop
+    tldr
   ];
 
   programs = {
