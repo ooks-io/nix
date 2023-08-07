@@ -29,7 +29,7 @@ in
       hm = "home-manager --flake .";
       hms = "home-manager --flake . switch";
 
-      tree = mkIf hasTre "tre"
+      tree = mkIf hasTre "tre";
 
       ls = mkIf hasExa "exa";
 
