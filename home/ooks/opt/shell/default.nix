@@ -11,16 +11,18 @@
   home.packages = with pkgs; [
     bc # Calculator
     ncdu # disk util
-    exa # ls
-    fd # find
+    exa # Ls
+    fd # Find
     ripgrep # Better grep
     httpie # Better curl
     diffsitter # Better diff
     jq # JSON pretty printer and manipulator
-    lazygit
+    lazygit # Better git
     comma # Install and run with ","
-    btop
-    tldr
+    btop # Resource manager
+    tldr # Community maintained help pages
+    tmux # Terminal multiplexer
+    tre-command # Better tree
   ];
 
   programs = {

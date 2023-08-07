@@ -6,6 +6,7 @@ let
   hasExa = hasPackage "exa";
   hasNeovim = config.programs.neovim.enable;
   hasKitty = config.programs.kitty.enable;
+  hasTre = hasPackage "tre-command";
 in
 {
   programs.fish = {
@@ -27,6 +28,8 @@ in
       snrs = "sudo nixos-rebuild --flake . switch";
       hm = "home-manager --flake .";
       hms = "home-manager --flake . switch";
+
+      tree = mkIf hasTre "tre"
 
       ls = mkIf hasExa "exa";
 
