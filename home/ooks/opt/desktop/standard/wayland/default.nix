@@ -6,6 +6,7 @@
     ./firefox.nix
     ./zathura.nix
     ./gammastep.nix
+    ./cursor.nix
   ];
 
   xdg.mimeApps.enable = true;

@@ -23,6 +23,7 @@
       LIBVA_DRIVER_NAME = "nvidia";
       WLR_RENDERER = "vulkan";
       # __NV_PRIME_RENDER_OFFLOAD = "1";
+      XCURSOR_SIZE = "24";
 
       XDG_CURRENT_DESKTOP = "Hyprland";
       XDG_SESSION_DESKTOP = "Hyprland";
