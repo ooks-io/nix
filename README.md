@@ -5,3 +5,6 @@ TODO:
 
 - [ ] sops
 - [ ] impermanence
+- [ ] fix tre alias/funtion
+- [ ] add spotify-player configuration
+
