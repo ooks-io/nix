@@ -9,8 +9,7 @@
           cloud = "$aws$gcloud$openstack";
         in
         ''
-          ($nix_shell)$directory(${git})(- ${cloud})
-          $jobs$character
+          ($nix_shell)$directory(${git})(- ${cloud})$jobs$character
         '';
 
       fill = {
