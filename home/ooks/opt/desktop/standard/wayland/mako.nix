@@ -9,14 +9,14 @@ in {
       else
         "${config.gtk.iconTheme.package}/share/icons/Papirus-Light";
     font = "${config.fontProfiles.regular.family} 12";
-    padding = "10,20";
-    anchor = "top-center";
-    width = 400;
-    height = 150;
+    padding = "10,10";
+    anchor = "top-right";
+    width = 300;
+    height = 100;
     borderSize = 2;
-    defaultTimeout = 6000;
+    defaultTimeout = 3000;
     backgroundColor = "#${colors.base00}dd";
-    borderColor = "#${colors.base03}dd";
+    borderColor = "#${colors.base0C}dd";
     textColor = "#${colors.base05}dd";
   };
 }
