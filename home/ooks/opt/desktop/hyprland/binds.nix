@@ -6,6 +6,8 @@
       browser = config.home.sessionVariables.BROWSER;
       editor = config.home.sessionVariables.EDITOR;
 
+      spotify = "${terminal} -e spotify_player";
+
       makoctl = "${config.services.mako.package}/bin/makoctl";
 
       playerctl = "${config.services.playerctld.package}/bin/playerctl";
@@ -17,17 +19,18 @@
       "SUPER,b,exec,${browser}"
       "SUPER,return,exec,${terminal}"
       "SUPER,e,exec,${editor}"
+      "SUPER,m,exec,${spotify}"
 
       #Media
 
-      ",XF86AudioNext,exec,${playerctl} next"
-      ",XF86AudioPrev,exec,${playerctl} previous"
-      ",XF86AudioPlay,exec,${playerctl} play-pause"
-      ",XF86AudioStop,exec,${playerctl} stop"
+      "SUPER,bracketright,exec,${playerctl} next"
+      "SUPER,bracketleft,exec,${playerctl} previous"
+      "SUPER,backslash,exec,${playerctl} play-pause"
       
       # Window Management
       
       "SUPER,Q,killactive"
+      "SUPER,backspace,killactive"
       "SUPERSHIFT ALT,delete,exit"
       "SUPER,F,fullscreen"
       "SUPER,Space,togglefloating"
@@ -67,8 +70,8 @@
       "SUPER,8,workspace,8"
       "SUPER,9,workspace,9"
       "SUPER,0,workspace,10"
-      "SUPERALT,up,workspace,e+1"
-      "SUPERALT,down,workspace,e-1"
+      "SUPER,comma,workspace,e+1"
+      "SUPER,period,workspace,e-1"
       "SUPER,tab,focusCurrentOrLast"
 
       # Move workspace
