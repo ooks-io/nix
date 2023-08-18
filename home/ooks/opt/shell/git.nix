@@ -6,4 +6,8 @@
     userName = "ooks-io";
     userEmail = "ooks@protonmail.com";
   };
+  
+  home.packages = with pkgs; [
+    git-credential-1password
+    ];
 }
