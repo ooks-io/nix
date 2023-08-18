@@ -75,8 +75,10 @@
       };
 
       exec = [
-        "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/walls/everforest/megacity.png --mode fill"
-	"1password --silent"
+        "swaybg -i ~/.dotfiles/nix/walls/everforest/megacity.png --mode fill"
+      ];
+      exec-once = [
+	"sleep 5 && 1password"
       ];
     };
   };

@@ -24,6 +24,7 @@
     wl-mirror
     xdg-utils
     ydotool
+    swaybg
   ];
 
   home.sessionVariables = {
