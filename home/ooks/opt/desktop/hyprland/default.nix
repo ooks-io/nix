@@ -76,6 +76,7 @@
 
       exec = [
         "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/walls/everforest/megacity.png --mode fill"
+	"${pkgs.1password}/bin/1password --silent"
       ];
     };
   };
