@@ -55,4 +55,5 @@
           extraSpecialArgs = { inherit inputs outputs; };
       };    
     };
+  };
 }
