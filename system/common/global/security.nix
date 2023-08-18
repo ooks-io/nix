@@ -6,11 +6,19 @@
 
 
 {
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    _1password = {
+      enable = true;
+    };
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ "ooks" ];
+    };
   };
-
   security = {
     polkit = {
       enable = true;
@@ -23,6 +31,7 @@
     };
   };
 
+  
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
