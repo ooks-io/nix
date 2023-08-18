@@ -35,6 +35,11 @@
           modules = [ ./system/ooksx1/ooksx1.nix ];
           specialArgs = { inherit inputs outputs; };
         };
+        # T480s
+        ookst480s =  lib.nixosSystem {
+          modules = [ ./system/ookst480s/ookst480s.nix ];
+          specialArgs = { inherit inputs outputs; };
+        };
       };
       homeConfigurations = {
         # X1 Carbon
@@ -43,6 +48,11 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
         };
+        # X1 Carbon
+        "ooks@ookst480s" = lib.homeManagerConfiguration {
+          modules = [ ./home/ooks/ookst480s.nix ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
       };    
     };
 }
