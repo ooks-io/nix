@@ -21,11 +21,24 @@
       "SUPER,e,exec,${editor}"
       "SUPER,m,exec,${spotify}"
 
-      #Media
+      # Media
 
-      "SUPER,bracketright,exec,${playerctl} next"
-      "SUPER,bracketleft,exec,${playerctl} previous"
-      "SUPER,backslash,exec,${playerctl} play-pause"
+      "SUPER,bracketright,exec,${playerctl} --player=spotify_player next"
+      "SUPER,bracketleft,exec,${playerctl} --player=spotify_player previous"
+      "SUPER,backslash,exec,${playerctl} --player=spotify_player play-pause"
+
+      # Brightness
+
+      ",XF86MonBrightnessUp,exec,light -A 10"
+      ",XF86MonBrightnessDown,exec,light -U 10"
+
+      # Volume
+
+      ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
+      ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
+      ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
+      "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
+      ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
       
       # Window Management
       
