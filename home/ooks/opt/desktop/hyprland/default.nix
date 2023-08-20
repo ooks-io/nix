@@ -4,7 +4,7 @@
     ../standard/wayland
     ../music
 
-   #./tty-init.nix
+    ./tty-init.nix
     ./binds.nix
     ./systemd-fix.nix
     ../env/hypr-variable.nix
@@ -75,10 +75,10 @@
       };
 
       exec = [
-        "swaybg -i ~/.dotfiles/nix/walls/everforest/megacity.png --mode fill"
+        "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/nix/walls/everforest/megacity.png --mode fill"
       ];
       exec-once = [
-	"sleep 5 && 1password"
+	"${pkgs._1password-gui}/bin/1password --silent"
       ];
     };
   };
