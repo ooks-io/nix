@@ -4,7 +4,7 @@
     ../standard/wayland
     ../music
 
-    ./tty-init.nix
+   #./tty-init.nix
     ./binds.nix
     ./systemd-fix.nix
     ../env/hypr-variable.nix
