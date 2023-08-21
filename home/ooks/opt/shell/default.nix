@@ -23,6 +23,7 @@
     tldr # Community maintained help pages
     tmux # Terminal multiplexer
     tre-command # Better tree
+    unzip
   ];
 
   programs = {

@@ -20,14 +20,17 @@
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
-      system = "x86_64-linux";
+      systems = [ "x86_64-linux" "aarch64-linux" ];
       lib = nixpkgs.lib // home-manager.lib;
+      forEachSystem = f: lib.genAttrs systems (sys: f pkgsFor.${sys});
       pkgsFor = nixpkgs.legacyPackages;
     in
     {
       inherit lib;
 
       homeManagerModules = import ./modules/home-manager;
+
+      packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
 
       nixosConfigurations = {
         # X1 Carbon
