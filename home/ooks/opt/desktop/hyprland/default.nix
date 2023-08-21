@@ -75,6 +75,7 @@
       };
 
       exec = [
+        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/nix/walls/everforest/megacity.png --mode fill"
       ];
       exec-once = [
