@@ -45,11 +45,13 @@ in
 
   programs.bash.initExtra = lib.mkAfter ''
     export EDITOR="${config.programs.neovim.package}/bin/nvim"
-  '';
+   '';
 
   programs.zsh.initExtra = lib.mkAfter ''
-    export EDITOR="${config.programs.neovim.package}/bin/nvim"
+   export EDITOR="${config.programs.neovim.package}/bin/nvim"
   '';
+
+  home.sessionVariables.EDITOR = "nvim";
 
   # Required packages -------------------------------------------------------------------------- {{{
 
