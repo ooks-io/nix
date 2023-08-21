@@ -20,8 +20,8 @@
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
-      systems = [ "x86_64-linux" "aarch64-linux" ];
       lib = nixpkgs.lib // home-manager.lib;
+      systems = [ "x86_64-linux" "aarch64-linux" ];
       forEachSystem = f: lib.genAttrs systems (sys: f pkgsFor.${sys});
       pkgsFor = nixpkgs.legacyPackages;
     in
@@ -30,8 +30,11 @@
 
       homeManagerModules = import ./modules/home-manager;
 
+      overlays = import ./overlays { inherit inputs outputs; };
+
       packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
       devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
+      formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
 
       nixosConfigurations = {
         # X1 Carbon
