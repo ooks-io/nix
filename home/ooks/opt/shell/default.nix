@@ -24,6 +24,7 @@
     tmux # Terminal multiplexer
     tre-command # Better tree
     unzip
+    progress
   ];
 
   programs = {
