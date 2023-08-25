@@ -18,5 +18,11 @@ in {
     backgroundColor = "#${colors.base00}dd";
     borderColor = "#${colors.base0C}dd";
     textColor = "#${colors.base05}dd";
+    extraConfig = ''
+      [app-name="system-notify"]
+      padding=3,3
+      width=100
+      height=100
+    '';
   };
 }

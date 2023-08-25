@@ -18,6 +18,7 @@
     mpv
     gtk3
     pulseaudio
+    pamixer
     slurp
     wf-recorder
     wl-clipboard

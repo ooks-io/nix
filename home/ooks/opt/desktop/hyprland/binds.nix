@@ -1,10 +1,53 @@
-{ lib, config, pkgs, ... }: {
+{ lib, config, pkgs, ... }: 
 
+  let
+    light = "${pkgs.light}/bin/light";
+    notifysend = "${pkgs.libnotify}/bin/notify-send";
+    pamixer = "${pkgs.pamixer}/bin/pamixer";
+
+    brightnessScript = pkgs.writeShellScriptBin "brightness" ''
+      #!/bin/sh
+
+      if [ "$1" == "up" ]; then
+      ${light} -A 10
+    elif [ "$1" == "down" ]; then
+      ${light} -U 10
+    else
+      echo "Invalid argument"
+      exit 1
+    fi
+
+    BRIGHTNESS=$(${light} -G | awk -F'.' '{print$1}')
+
+    ${notifysend} --app-name="system-notify" -h string:x-canonical-private-synchronous:sys-notify "󰃠  $BRIGHTNESS%"
+    '';
+
+    volumeScript = pkgs.writeShellScriptBin "volume" ''
+    #!/bin/sh
+
+    if [ "$1" == "up" ]; then
+      pamixer --increase 5
+    elif [ "$1" == "down" ]; then
+      pamixer --decrease 5
+    elif [ "$1" == "mute" ]; then
+      pamixer --toggle-mute
+    fi
+
+    VOLUME=$(pamixer --get-volume-human)
+
+    ${notifysend} --app-name="system-notify" -h string:x-canonical-private-synchronous:sys-notify "  $VOLUME"
+  '';
+in
+
+  {
   wayland.windowManager.hyprland.settings = {
     bind = let
       terminal = config.home.sessionVariables.TERMINAL;
       browser = config.home.sessionVariables.BROWSER;
       editor = config.home.sessionVariables.EDITOR;
+      
+      bright = "${brightnessScript}/bin/brightness";
+      volume = "${volumeScript}/bin/volume";
 
       spotify = "${terminal} -e spotify_player";
 
@@ -29,16 +72,14 @@
 
       # Brightness
 
-      ",XF86MonBrightnessUp,exec,light -A 10"
-      ",XF86MonBrightnessDown,exec,light -U 10"
+      ",XF86MonBrightnessUp,exec,${bright} up"
+      ",XF86MonBrightnessDown,exec,${bright} down"
 
       # Volume
 
-      ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
-      ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
-      ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
-      "SHIFT,XF86AudioMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
-      ",XF86AudioMicMute,exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
+      ",XF86AudioRaiseVolume,exec,${volume} up"
+      ",XF86AudioLowerVolume,exec,${volume} down"
+      ",XF86AudioMute,exec,${volume} mute"
       
       # Window Management
       
