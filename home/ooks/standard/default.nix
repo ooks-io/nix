@@ -11,7 +11,7 @@ in
 
   nixpkgs = {
     config = {
-      overlays = builtins.attrValues outputs.overlays;
+      #overlays = builtins.attrValues outputs.overlays;
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
       permittedInsecurePackages = [
