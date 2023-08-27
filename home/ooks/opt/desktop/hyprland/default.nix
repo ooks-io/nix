@@ -68,6 +68,10 @@
           "fadeDim,1,3,easeout"
           "border,1,3,easeout"
         ];
+
+      windowrulev2 = [
+        "float,move 191 15,size 924 396,class:(1Password)"
+      ];
 	
 	monitor = [
 	  ",prefered,auto,auto"

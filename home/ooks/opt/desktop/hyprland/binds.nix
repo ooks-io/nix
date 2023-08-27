@@ -53,6 +53,8 @@ in
 
       makoctl = "${config.services.mako.package}/bin/makoctl";
 
+      password = "${pkgs._1password-gui}/bin/1password --enable-features=UseOzonePlatform --ozone-platform=wayland";
+      
       playerctl = "${config.services.playerctld.package}/bin/playerctl";
       playerctld = "${config.services.playerctld.package}/bin/playerctld";
       pactl = "${pkgs.pulseaudio}/bin/pactl";
@@ -63,6 +65,7 @@ in
       "SUPER,return,exec,${terminal}"
       "SUPER,e,exec,${editor}"
       "SUPER,m,exec,${spotify}"
+      "SUPERSHIFT,P,exec,${password}"
 
       # Media
 
