@@ -7,6 +7,7 @@
     ./pfetch.nix
     ./starship.nix
     ./joshuto
+    ./helix.nix
   ];
   home.packages = with pkgs; [
     bc # Calculator
@@ -25,6 +26,7 @@
     tre-command # Better tree
     unzip
     progress
+    killall
   ];
 
   programs = {
