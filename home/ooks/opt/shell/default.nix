@@ -7,7 +7,7 @@
     ./pfetch.nix
     ./starship.nix
     ./joshuto
-    ./helix.nix
+    ./helix
   ];
   home.packages = with pkgs; [
     bc # Calculator
@@ -27,6 +27,7 @@
     unzip
     progress
     killall
+    gcc
   ];
 
   programs = {

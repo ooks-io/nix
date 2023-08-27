@@ -6,6 +6,4 @@
   programs.neovim.viAlias = true;
   programs.neovim.vimAlias = true;
 
-  home.sessionVariables.EDITOR = "nvim";
-
 }
