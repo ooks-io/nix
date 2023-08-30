@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   inherit (config) colorscheme;
 in
@@ -7,7 +7,10 @@ in
   home.sessionVariables.EDITOR = "hx";
   home.sessionVariables.VISUAL = "hx";
 
-  
+  home.packages = with pkgs; [
+    marksman
+  ];    
+
   programs.helix = {
     enable = true;
     settings = {
