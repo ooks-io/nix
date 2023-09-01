@@ -23,6 +23,11 @@ in {
       padding=3,3
       width=100
       height=100
+      [app-name="bat-notify"]
+      padding=3,3
+      width=100
+      height=100
+      anchor=top-center
     '';
   };
 }

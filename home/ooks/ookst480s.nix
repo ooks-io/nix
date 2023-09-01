@@ -6,6 +6,7 @@
     ./opt/shell
     ./opt/desktop/hyprland
     ./standard  
+    ./opt/desktop/notify/batterynotify.nix
   ];
 
   colorscheme = inputs.nix-colors.colorSchemes.everforest;
