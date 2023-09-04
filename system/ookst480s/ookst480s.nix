@@ -16,6 +16,7 @@
     ../common/user/ooks
     ../common/global
     ../common/opt/bluetooth.nix
+    ../common/opt/batterynotify.nix
 
 		];
 
@@ -99,6 +100,10 @@
     };
   };	
 
+# Battery notification
+# -------------------------------------------------------------------------------------------------
+
+  modules.battery-notify.enable = true;
 # System Version
 # -------------------------------------------------------------------------------------------------
 
