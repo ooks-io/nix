@@ -3,6 +3,7 @@
     ../standard
     ../standard/wayland
     ../music
+    ../standard/wayland/eww
 
     ./tty-init.nix
     ./binds.nix
