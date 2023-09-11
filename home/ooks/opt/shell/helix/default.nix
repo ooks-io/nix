@@ -6,9 +6,11 @@ in
   home.sessionVariables.COLORTERM = "truecolor";
   home.sessionVariables.EDITOR = "hx";
   home.sessionVariables.VISUAL = "hx";
+  
 
   home.packages = with pkgs; [
     marksman
+    nil
   ];    
 
   programs.helix = {

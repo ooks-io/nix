@@ -1,5 +1,5 @@
 { pkgs ? (import ../nixpkgs.nix) { } }: {
   
-  nvchad = pkgs.callPackage ./nvchad { };
+  live-buds-cli = pkgs.callPackage ./live-buds-cli { };
 
 }
