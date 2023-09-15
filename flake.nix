@@ -17,6 +17,11 @@
       };
     };
 
+      hyprland = {
+      url = "github:hyprwm/hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
@@ -55,7 +60,7 @@
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
         };
-        # X1 Carbon
+        # T480s
         "ooks@ookst480s" = lib.homeManagerConfiguration {
           modules = [ ./home/ooks/ookst480s.nix ];
           pkgs = pkgsFor.x86_64-linux;

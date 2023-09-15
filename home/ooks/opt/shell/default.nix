@@ -8,6 +8,7 @@
     ./starship.nix
     ./joshuto
     ./helix
+    ./live-buds-cli.nix
   ];
   home.packages = with pkgs; [
     bc # Calculator

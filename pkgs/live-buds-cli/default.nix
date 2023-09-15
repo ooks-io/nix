@@ -20,7 +20,7 @@ rustPlatform.buildRustPackage rec {
   meta = with lib; {
     description = "A free cli tool to control your Galaxy buds live, Galaxy Buds+, Galaxy Buds Pro, Galaxy Buds 2 and Galaxy Buds 2 Pro";
     license = licenses.gpl3;
-    maintainers = [ maintainers.ooks-io ];  # replace with your maintainer info
+   #maintainers = [ maintainers.ooks-io ];  # replace with your maintainer info
     platforms = platforms.unix;
   };
 }
