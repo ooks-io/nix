@@ -11,7 +11,7 @@ in
 
   nixpkgs = {
     config = {
-      #overlays = builtins.attrValues outputs.overlays;
+      overlays = builtins.attrValues outputs.overlays;
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
       permittedInsecurePackages = [
@@ -38,8 +38,11 @@ in
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
     stateVersion = lib.mkDefault "22.05";
     sessionPath = [ "$HOME/.local/bin" ];
+    sessionVariables = {
+      FLAKE = "$HOME/.dotfiles/nix";
     };
-
+  };
+  
   colorscheme = lib.mkDefault colorSchemes.everforest;
   home.file.".colorscheme".text = config.colorscheme.slug;
 }
