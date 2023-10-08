@@ -36,7 +36,7 @@
         active_opacity = 1.0;
         inactive_opacity = 1.0;
         fullscreen_opacity = 1.0;
-        rounding = 5;
+        rounding = 0;
         blur = {
           enabled = false;
           new_optimizations = true;
@@ -81,7 +81,7 @@
 
       exec = [
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-        "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/nix/walls/everforest/megacity.png --mode fill"
+        "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/nix/walls/gruvbox/gruvbox-grid.png --mode fill"
       ];
       exec-once = [
 	"${pkgs._1password-gui}/bin/1password --silent"

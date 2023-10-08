@@ -7,6 +7,7 @@
     ./zathura.nix
     ./gammastep.nix
     ./cursor.nix
+    ./gimp.nix
   ];
 
   xdg.mimeApps.enable = true;

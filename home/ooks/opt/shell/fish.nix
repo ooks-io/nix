@@ -2,8 +2,7 @@
 let
   inherit (lib) mkIf;
   hasPackage = pname: lib.any (p: p ? pname && p.pname == pname) config.home.packages;
-  hasRipgrep = hasPackage "ripgrep";
-  hasExa = hasPackage "exa";
+  hasEza = hasPackage "eza";
   hasNeovim = config.programs.neovim.enable;
   hasKitty = config.programs.kitty.enable;
   hasTre = hasPackage "tre-command";
@@ -31,7 +30,7 @@ in
 
       tree = mkIf hasTre "tre";
 
-      ls = mkIf hasExa "exa";
+      ls = mkIf hasEza "eza";
 
       vim = mkIf hasNeovim "nvim";
 

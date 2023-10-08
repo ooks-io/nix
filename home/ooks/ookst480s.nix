@@ -8,6 +8,6 @@
     ./standard  
   ];
 
-  colorscheme = inputs.nix-colors.colorSchemes.everforest;
+  colorscheme = inputs.nix-colors.colorSchemes.gruvbox-dark-soft;
 
 }
