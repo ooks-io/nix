@@ -16,7 +16,7 @@ in {
     borderSize = 2;
     defaultTimeout = 3000;
     backgroundColor = "#${colors.base00}dd";
-    borderColor = "#${colors.base0C}dd";
+    borderColor = "#${colors.base05}dd";
     textColor = "#${colors.base05}dd";
     extraConfig = ''
       [app-name="system-notify"]

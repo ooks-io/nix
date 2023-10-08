@@ -20,7 +20,7 @@
         gaps_out = 10;
         border_size = 2;
         cursor_inactive_timeout = 4;
-        "col.active_border" = "0xff${config.colorscheme.colors.base0C}";
+        "col.active_border" = "0xff${config.colorscheme.colors.base05}";
         "col.inactive_border" = "0xff${config.colorscheme.colors.base02}";
         "col.group_border_active" = "0xff${config.colorscheme.colors.base0B}";
         "col.group_border" = "0xff${config.colorscheme.colors.base04}";
@@ -81,7 +81,7 @@
 
       exec = [
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-        "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/nix/walls/gruvbox/gruvbox-grid.png --mode fill"
+        "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/nix/walls/gruvbox/gruvbox-blank.png --mode fill"
       ];
       exec-once = [
 	"${pkgs._1password-gui}/bin/1password --silent"

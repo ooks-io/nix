@@ -88,7 +88,7 @@ in
       # Window Management
       
       "SUPER,          Q,             killactive"
-      "SUPER,          backspace,     killactive"
+      #"SUPER,          backspace,     killactive"
       "SUPERSHIFT ALT, delete,        exit"
       "SUPER,          F,             fullscreen"
       "SUPER,          Space,         togglefloating"
