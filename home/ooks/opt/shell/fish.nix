@@ -6,6 +6,7 @@ let
   hasNeovim = config.programs.neovim.enable;
   hasKitty = config.programs.kitty.enable;
   hasTre = hasPackage "tre-command";
+  hasBat = hasPackage "bat";
 in
 {
   programs.fish = {
@@ -31,6 +32,8 @@ in
       tree = mkIf hasTre "tre";
 
       ls = mkIf hasEza "eza";
+
+      cat = mkIf hasBat "bat";
 
       vim = mkIf hasNeovim "nvim";
 
