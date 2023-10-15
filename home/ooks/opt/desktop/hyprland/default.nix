@@ -84,7 +84,7 @@
         "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/nix/walls/gruvbox/gruvbox-blank.png --mode fill"
       ];
       exec-once = [
-	"${pkgs._1password-gui}/bin/1password --silent"
+	"${pkgs._1password-gui}/bin/1password --silent --enable-features=UseOzonePlatform --ozone-platform=wayland"
       ];
     };
   };
