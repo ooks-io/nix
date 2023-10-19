@@ -1,8 +1,9 @@
-
 {config, pkgs, ... }:
 
 {
   programs.dconf.enable = true;
+  
+  users.users.gcis.extraGroups = [ "libvirtd" ];
   
   environment.systemPackages = with pkgs; [
     virt-manager
@@ -28,3 +29,4 @@
   };
   services.spice-vdagentd.enable = true;
 }
+
