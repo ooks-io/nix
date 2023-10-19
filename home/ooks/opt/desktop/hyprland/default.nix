@@ -3,7 +3,6 @@
     ../standard
     ../standard/wayland
     ../music
-    ../vm
     ../standard/wayland/eww
 
     ./tty-init.nix
