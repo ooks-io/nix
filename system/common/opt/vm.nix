@@ -3,8 +3,6 @@
 {
   programs.dconf.enable = true;
   
-  users.users.gcis.extraGroups = [ "libvirtd" ];
-  
   environment.systemPackages = with pkgs; [
     virt-manager
     virt-viewer
