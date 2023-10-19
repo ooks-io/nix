@@ -30,6 +30,8 @@
     killall
     gcc
     wget 
+    powertop
+    
   ];
 
   programs = {
