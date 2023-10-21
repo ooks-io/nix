@@ -30,6 +30,7 @@
     gcc
     wget 
     powertop
+    acpi
     
   ];
 
