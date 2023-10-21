@@ -1,4 +1,4 @@
-{ lib, rustPlatform, fetchFromGitHub, stdenv, pkgconfig, dbus, libpulseaudio, bluez }:
+{ lib, rustPlatform, fetchFromGitHub, stdenv, pkg-config, dbus, libpulseaudio, bluez }:
 
 rustPlatform.buildRustPackage rec {
   pname = "live-buds-cli";
@@ -14,7 +14,7 @@ rustPlatform.buildRustPackage rec {
 
   cargoSha256 = "w/dt7Q9TACw5N/+QNAKMUEngf8sAhWyGslnw3B16crQ=";  # you will need to determine this hash
 
-  nativeBuildInputs = [ pkgconfig ];
+  nativeBuildInputs = [ pkg-config ];
   buildInputs = [ libpulseaudio bluez dbus ];
 
   meta = with lib; {
