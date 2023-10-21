@@ -7,6 +7,7 @@
   
   environment.systemPackages = with pkgs; [
   	galaxy-buds-client
-	bluetuith
+    live-buds-cli
+	  bluetuith
 	];
 }

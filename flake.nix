@@ -37,7 +37,9 @@
 
       overlays = import ./overlays { inherit inputs outputs; };
 
-      packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
+      packages = forEachSystem (pkgs: {
+        live-buds-cli = pkgs.callPackage ./pkgs/live-buds-cli { };
+      });
       devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
 
