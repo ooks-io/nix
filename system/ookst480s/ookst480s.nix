@@ -17,6 +17,7 @@
     ../common/global
     ../common/opt/bluetooth.nix
     ../common/opt/vm.nix
+    ../common/opt/greetd.nix
 
 		];
 
