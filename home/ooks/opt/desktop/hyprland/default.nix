@@ -4,6 +4,7 @@
     ../standard/wayland
     ../music
     ../standard/wayland/eww
+    ../standard/wayland/swaylock.nix
 
 #    ./tty-init.nix
     ./binds.nix
