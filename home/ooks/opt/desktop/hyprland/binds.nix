@@ -3,6 +3,7 @@
   let
     light = "${pkgs.light}/bin/light";
     notifysend = "${pkgs.libnotify}/bin/notify-send";
+    swaylock = "${config.programs.swaylock.package}/bin/swaylock";
     #pamixer = "${pkgs.pamixer}/bin/pamixer";
 
     brightnessScript = pkgs.writeShellScriptBin "brightness" ''
@@ -144,6 +145,9 @@ in
       "SUPERSHIFT,     8,             movetoworkspace,8"
       "SUPERSHIFT,     9,             movetoworkspace,9"
       "SUPERSHIFT,     0,             movetoworkspace,10"
+
+      # Lock Screen
+      "SUPER,          Backspace,     exec,     ${swaylock}"
     ];
 # ----- MOUSE KEYBINDS ----- #
     bindm = [
