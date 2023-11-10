@@ -16,8 +16,9 @@
 		./hardware-configuration.nix
     
     ../common/user/ooks
-    ../common/global
-    ../common/opt/bluetooth.nix
+    ../common/base
+    ../common/features/bluetooth.nix
+		../common/features/greetd.nix
 
 		];
 
@@ -129,11 +130,6 @@
 # -------------------------------------------------------------------------------------------------
 
 	system = {
-		autoUpgrade = {
-			enable = false;
-			channel = "https://nixos.org/channels/nix-unstable";
-			};
 		stateVersion = "22.05";
-		copySystemConfiguration = false;
 	};
 }
