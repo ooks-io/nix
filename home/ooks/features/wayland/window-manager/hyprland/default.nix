@@ -84,12 +84,13 @@
       ) (config.monitors);
 
       exec = [
-        "pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/nix/walls/gruvbox/gruvbox-blank.png --mode fill"
       ];
+      
       exec-once = [
-	"${pkgs._1password-gui}/bin/1password --silent"
-  "earbuds -d"
+	      "${pkgs._1password-gui}/bin/1password --silent"
+        "earbuds -d"
       ];
     };
   };
