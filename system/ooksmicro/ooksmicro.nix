@@ -25,7 +25,7 @@
 # -------------------------------------------------------------------------------------------------
 
 	networking = {
-		hostName = "ookst480s"; 		
+		hostName = "ooksmicro"; 		
     networkmanager.enable = true;
 		};
 
@@ -40,7 +40,7 @@
 
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_zen;
-    kernalPerams = [ "fbcon=rotate:1" ];
+    kernelParams = [ "fbcon=rotate:1" ];
   };
 
 

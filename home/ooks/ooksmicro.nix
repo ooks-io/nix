@@ -12,7 +12,7 @@
     height = 1280;
     workspace = "1";
     primary = true;
-    transform = 3;
+    transform = 2;
   }];
   
   colorscheme = inputs.nix-colors.colorSchemes.gruvbox-dark-soft;
