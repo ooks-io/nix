@@ -40,6 +40,7 @@
       packages = forEachSystem (pkgs: {
         live-buds-cli = pkgs.callPackage ./pkgs/live-buds-cli { };
       });
+
       devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
       formatter = forEachSystem (pkgs: pkgs.nixpkgs-fmt);
 
@@ -54,6 +55,11 @@
           modules = [ ./system/ookst480s/ookst480s.nix ];
           specialArgs = { inherit inputs outputs; };
         };
+        # GPD Micro-PC
+        ooksmicro = lib.nixosSystem {
+          modules = [ ./system/ooksmicro/ooksmicro.nix ];
+          specialArgs = { inherit inputs outputs; };
+        };
       };
       homeConfigurations = {
         # X1 Carbon
@@ -65,6 +71,11 @@
         # T480s
         "ooks@ookst480s" = lib.homeManagerConfiguration {
           modules = [ ./home/ooks/ookst480s.nix ];
+          pkgs = pkgsFor.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+      };    
+        "ooks@ooksmicro" = lib.homeManagerConfiguration {
+          modules = [ ./home/ooks/ooksmicro.nix ];
           pkgs = pkgsFor.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
       };    
