@@ -8,6 +8,7 @@
     ./gammastep.nix
     ./cursor.nix
     ./gimp.nix
+    ./swaylock.nix
   ];
 
   xdg.mimeApps.enable = true;
