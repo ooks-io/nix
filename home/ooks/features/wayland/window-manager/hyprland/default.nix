@@ -75,12 +75,20 @@
         "float,move 191 15,size 924 396,class:(1Password)"
       ];
 	
-    	monitor = map (m: let
+    # monitor = map (m: let
+     #   resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+     #   position = "${toString m.x}x${toString m.y}";
+     #   transform = if m.transform != 0 then ",transform,${toString m.transform}" else "";
+     # in
+     #   "${m.name},${if m.enabled then "${resolution},${position},1${transform}" else "disable"}"
+     # ) (config.monitors);
+
+      monitor = lib.concatMap (m: let
         resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
         position = "${toString m.x}x${toString m.y}";
-        transform = if m.transform != 0 then ",transform,${toString m.transform}" else "";
+        basicConfig = "${m.name},${if m.enabled then "${resolution},${position},1" else "disable"}";
       in
-        "${m.name},${if m.enabled then "${resolution},${position},1${transform}" else "disable"}"
+        [ basicConfig ] ++ (if m.transform != 0 then ["${m.name},transform,${toString m.transform}"] else [])
       ) (config.monitors);
 
       exec = [
