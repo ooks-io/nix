@@ -1,6 +1,8 @@
 { pkgs, ... }: {
   imports = [
     ./bat.nix
+    ./nvim.nix
+    ./fzf.nix
     ./git.nix
     ./bash.nix
     ./fish.nix
@@ -33,8 +35,4 @@
     acpi
     
   ];
-
-  programs = {
-    fzf.enable = true;
-  };
 }

@@ -1,16 +1,12 @@
 { lib, config, pkgs, ... }: {
   imports = [
-    ../standard
-    ../standard/wayland
-    ../music
-    ../standard/wayland/eww
-    ../standard/wayland/swaylock.nix
-
-#    ./tty-init.nix
-    ./binds.nix
-    ./systemd-fix.nix
-    ../env/hypr-variable.nix
-  ];
+    ../../essentials #import essential wayland specific programs
+    ../../../essentials #import essential programs
+    #./tty-init.nix
+    ./binds.nix #hyprland keybindings
+    ./systemd-fix.nix #fix for systemd and hyprland
+    ./environment-variables.nix #hyprland environment variables
+    ];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -73,18 +69,22 @@
           "fadeDim,1,3,easeout"
           "border,1,3,easeout"
         ];
+      };
 
       windowrulev2 = [
         "float,move 191 15,size 924 396,class:(1Password)"
       ];
 	
-	monitor = [
-	  ",prefered,auto,auto"
-	];
-      };
+    	monitor = map (m: let
+        resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+        position = "${toString m.x}x${toString m.y}";
+        transform = if m.transform != 0 then ",transform,${toString m.transform}" else "";
+      in
+        "${m.name},${if m.enabled then "${resolution},${position},1${transform}" else "disable"}"
+      ) (config.monitors);
 
       exec = [
-        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+        "pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/nix/walls/gruvbox/gruvbox-blank.png --mode fill"
       ];
       exec-once = [
