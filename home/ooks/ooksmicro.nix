@@ -7,12 +7,12 @@
   ];
 
   monitors = [{
-    name = "eDP-1";
+    name = "DSI-1";
     width = 720;
     height = 1280;
     workspace = "1";
     primary = true;
-    transform = 2;
+    transform = 3;
   }];
   
   colorscheme = inputs.nix-colors.colorSchemes.gruvbox-dark-soft;

@@ -84,9 +84,6 @@
     thermald = {
       enable = true;
     };
-    tlp = {
-      enable = true;
-    };
     logind = {
       lidSwitch = "suspend";
     };
