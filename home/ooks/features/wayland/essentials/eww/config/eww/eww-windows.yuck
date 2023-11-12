@@ -1,0 +1,62 @@
+;;Clock -----------------------------------------
+(defwindow window-clock
+  :monitor 0
+  :geometry (geometry
+    :anchor "top left"
+    :x "0.8%"
+    :y "-2.6%"
+    :width "0%"
+    :height "0%"
+  )
+  :stacking "fg"
+  :exclusive "true"
+  :focusable "false"
+  (widget-clock)
+)
+;;Battery ---------------------------------------
+(defwindow window-battery
+  :monitor 0
+  :geometry (geometry
+    :anchor "top right"
+    :x "0%"
+    :y "-2.6%"
+    :width "0%"
+    :height "0%"
+  )
+  :stacking "fg"
+  :exclusive "true"
+  :focusable "false"
+  (widget-battery)
+)
+;;Earbuds window
+
+(defwindow window-earbuds
+  :monitor 0
+  :geometry (geometry
+    :anchor "top center"
+    :x "0%"
+    :y "-2.6%"
+    :width "0%"
+    :height "0%"
+  )
+  :stacking "fg"
+  :exclusive "true"
+  :focusable "false"
+  (widget-earbuds)
+)
+;;Bar -------------------------------------------
+(defwindow bar
+  :monitor 0
+  :geometry (geometry
+    :anchor "top center"
+    :x "0"
+    :y "0"
+    :width "100%"
+    :height "3%"
+  )
+  :stacking "bg"
+  :exclusive "true"
+  :focusable "false"
+  " "  
+)
+

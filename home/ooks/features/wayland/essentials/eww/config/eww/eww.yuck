@@ -1,0 +1,4 @@
+;;Imports
+(include "eww-variables.yuck")
+(include "eww-windows.yuck")
+(include "eww-widgets.yuck")

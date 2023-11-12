@@ -1,0 +1,18 @@
+;;Variables
+
+
+;;Clock
+(defpoll TIME :interval "30s" "date +'%I:%M %p'")
+
+;;Battery 
+(defpoll BATTERY-PERCENTAGE :interval "30s" "./scripts/bat.sh --percentage")
+(defpoll BATTERY-COLOR :interval "5s" "./scripts/batterytest.sh --color")
+(defpoll BATTERY-STATUS :interval "5s" "./scripts/bat.sh --status")
+(defpoll BATTERY-ICON :interval "5s" "./scripts/battery.sh --icons")
+
+;;Earbuds
+(defpoll EARBUDS_CONNECTION :interval "5s" "./scripts/earbuds.sh --connection")
+(defpoll EARBUDS_RIGHT :interval "5s" "./scripts/earbuds.sh --left")
+(defpoll EARBUDS_LEFT :interval "5s" "./scripts/earbuds.sh --right")
+
+;;Workspaces
