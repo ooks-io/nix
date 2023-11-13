@@ -99,6 +99,7 @@
       exec-once = [
 	      "${pkgs._1password-gui}/bin/1password --silent"
         "earbuds -d"
+        "eww open-many bar window-clock window-battery window-earbuds"
       ];
     };
   };
