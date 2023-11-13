@@ -9,6 +9,7 @@
     ./cursor.nix
     ./gimp.nix
     ./swaylock.nix
+    ./eww
   ];
 
   xdg.mimeApps.enable = true;

@@ -1,9 +1,8 @@
 { config, pkgs, lib, ... }:
 {
-  home.packages = with pkgs; [ eww-wayland ];
-
-
-
-
-  
+  programs.eww = {
+    enable = true;
+    package = pkgs.eww-wayland;
+    configDir = ./config;
+  };
 }
