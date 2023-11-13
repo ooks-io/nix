@@ -3,7 +3,6 @@
   let
     light = "${pkgs.light}/bin/light";
     notifysend = "${pkgs.libnotify}/bin/notify-send";
-    swaylock = "${config.programs.swaylock.package}/bin/swaylock";
     #pamixer = "${pkgs.pamixer}/bin/pamixer";
 
     brightnessScript = pkgs.writeShellScriptBin "brightness" ''
@@ -50,6 +49,7 @@ in
       bright = "${brightnessScript}/bin/brightness";
       volume = "${volumeScript}/bin/volume";
 
+      swaylock = "${config.programs.swaylock.package}/bin/swaylock";
       spotify = "${terminal} -e spotify_player";
       spotifyctl = "${pkgs.spotify-player}/bin/spotify_player";
     
@@ -89,7 +89,7 @@ in
       # Window Management
       
       "SUPER,          Q,             killactive"
-      #"SUPER,          backspace,     killactive"
+      "SUPER CTRL,     backspace,     killactive"
       "SUPERSHIFT ALT, delete,        exit"
       "SUPER,          F,             fullscreen"
       "SUPER,          Space,         togglefloating"
@@ -149,7 +149,7 @@ in
       # Lock Screen
       "SUPER,          Backspace,     exec,     ${swaylock}"
     ];
-# ----- MOUSE KEYBINDS ----- #
+      # Mouse
     bindm = [
       "SUPER,          mouse:272,     movewindow"
       "SUPER,          mouse:273,     resizewindow"
