@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs,  ... }: {
   fontProfiles = {
     enable = true;
     monospace = {
@@ -10,4 +10,9 @@
       package = pkgs.fira;
     };
   };
+  home.packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+  ];
 }
