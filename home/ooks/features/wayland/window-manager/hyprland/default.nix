@@ -19,8 +19,10 @@
         cursor_inactive_timeout = 4;
         "col.active_border" = "0xff${config.colorscheme.colors.base05}";
         "col.inactive_border" = "0xff${config.colorscheme.colors.base02}";
-        "col.group_border_active" = "0xff${config.colorscheme.colors.base0B}";
-        "col.group_border" = "0xff${config.colorscheme.colors.base04}";
+      };
+      group = {
+        "col.border_active" = "0xff${config.colorscheme.colors.base0B}";
+        "col.border_inactive" = "0xff${config.colorscheme.colors.base04}";
       };
       input = {
         kb_layout = "us";
@@ -75,14 +77,6 @@
         "float,move 191 15,size 924 396,class:(1Password)"
       ];
 	
-    # monitor = map (m: let
-     #   resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
-     #   position = "${toString m.x}x${toString m.y}";
-     #   transform = if m.transform != 0 then ",transform,${toString m.transform}" else "";
-     # in
-     #   "${m.name},${if m.enabled then "${resolution},${position},1${transform}" else "disable"}"
-     # ) (config.monitors);
-
       monitor = lib.concatMap (m: let
         resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
         position = "${toString m.x}x${toString m.y}";
