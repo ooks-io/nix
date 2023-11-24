@@ -31,7 +31,7 @@ in
 
       tree = mkIf hasTre "tre";
 
-      ls = mkIf hasEza "eza";
+      ls = mkIf hasEza "eza --icons";
 
       cat = mkIf hasBat "bat";
 
