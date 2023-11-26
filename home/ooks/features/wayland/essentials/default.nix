@@ -10,6 +10,7 @@
     ./gimp.nix
     ./swaylock.nix
     ./eww
+    ./foot.nix
   ];
 
   xdg.mimeApps.enable = true;

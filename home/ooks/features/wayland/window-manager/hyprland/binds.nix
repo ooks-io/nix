@@ -50,6 +50,7 @@ in
       volume = "${volumeScript}/bin/volume";
 
       swaylock = "${config.programs.swaylock.package}/bin/swaylock";
+      foot = "${config.programs.foot.package}/bin/foot";
       spotify = "${terminal} -e spotify_player";
       spotifyctl = "${pkgs.spotify-player}/bin/spotify_player";
     
@@ -68,6 +69,7 @@ in
       "SUPER,          e,             exec,     ${editor}"
       "SUPER,          m,             exec,     ${spotify}"
       "SUPERSHIFT,     P,             exec,     ${password}"
+      "SUPERSHIFT,     return,        exec,     ${foot}"
 
       # Spotify PLayer Controls
 
