@@ -20,6 +20,7 @@ in
         letter-spacing = "-1px";
         bold-text-in-bright = "palette-based";
         resize-delay-ms = "80";       
+        pad = "9x9 center";
       };
       cursor = {
         style = "beam";
