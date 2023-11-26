@@ -5,7 +5,7 @@ let
 in
 
 {
-  #home.sessionVariables = { TERMINAL = "foot"; };
+  home.sessionVariables = { TERMINAL = "foot"; };
 
   programs.foot = {
     enable = true;
@@ -17,6 +17,13 @@ in
         font-italic = "${config.fontProfiles.monospace.family}:style=Italic:pixelsize=18:antialias=true";
         font-bold-italic = "${config.fontProfiles.monospace.family}:style=Bold Italic:pixelsize=18:antialias=true";
         dpi-aware = "yes";
+        letter-spacing = "-1px";
+        bold-text-in-bright = "palette-based";
+        resize-delay-ms = "80";       
+      };
+      cursor = {
+        style = "beam";
+        blink = "yes";
       };
       colors = {
         alpha = 1.0;
