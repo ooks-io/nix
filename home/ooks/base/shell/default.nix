@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./bat.nix
+    ./lf.nix
     ./nvim.nix
     ./fzf.nix
     ./git.nix

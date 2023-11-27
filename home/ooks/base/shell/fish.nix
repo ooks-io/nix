@@ -7,6 +7,7 @@ let
   hasKitty = config.programs.kitty.enable;
   hasTre = hasPackage "tre-command";
   hasBat = hasPackage "bat";
+  hasHelix = hasPackage "helix";
 in
 {
   programs.fish = {
@@ -29,6 +30,8 @@ in
       hm = "home-manager --flake .";
       hms = "home-manager --flake . switch";
 
+      fe = mkIf hasHelix "cd $FLAKE; hx $FLAKE";
+
       tree = mkIf hasTre "tre";
 
       ls = mkIf hasEza "eza --icons";
@@ -40,6 +43,18 @@ in
     };
     functions = {
       fish_greeting = "";
+      fish_flake_edit = ''
+      cd $FLAKE
+      hx $FLAKE
+      '';
+      fish_hello_world = ''
+        echo "Hello World"; string repeat -N \n --count=(math (count (fish_prompt)) - 1); commandline -f repaint
+        '';
+
+      fish_user_key_bindings = ''
+        bind --preset -M insert \co fish_hello_world
+        bind --preset -M insert \cf fish_flake_edit
+      '';
     };
       # kitty integration
     interactiveShellInit =
