@@ -4,8 +4,6 @@ let
   hasPackage = pname: lib.any (p: p ? pname && p.pname == pname) config.home.packages;
   hasEza = hasPackage "eza";
   hasNeovim = config.programs.neovim.enable;
-  hasKitty = config.programs.kitty.enable;
-  hasTre = hasPackage "tre-command";
   hasBat = hasPackage "bat";
   hasHelix = hasPackage "helix";
 in
@@ -32,9 +30,11 @@ in
 
       fe = mkIf hasHelix "cd $FLAKE; hx $FLAKE";
 
-      tree = mkIf hasTre "tre";
-
-      ls = mkIf hasEza "eza --icons";
+      tree = mkIf hasEza "eza -aT --icons --group-directories-first";
+      ls = mkIf hasEza "eza -a --icons --group-directories-first";
+      lsd = mkIf hasEza "eza -al --icons --group-directories-first";
+      lst = mkIf hasEza "eza -aT -L 5 --icons --group-directories-first";
+      lsta = mkIf hasEza "eza -aT --icons --group-directories-first";
 
       cat = mkIf hasBat "bat";
 

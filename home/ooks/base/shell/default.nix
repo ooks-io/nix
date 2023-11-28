@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./bat.nix
-    ./lf.nix
+    ./lf
     ./nvim.nix
     ./fzf.nix
     ./git.nix
@@ -26,7 +26,6 @@
     btop # Resource manager
     tldr # Community maintained help pages
     tmux # Terminal multiplexer
-    tre-command # Better tree
     unzip
     progress
     killall
