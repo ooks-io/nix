@@ -30,11 +30,11 @@ in
 
       fe = mkIf hasHelix "cd $FLAKE; hx $FLAKE";
 
-      tree = mkIf hasEza "eza -aT --icons --group-directories-first";
+      tree = mkIf hasEza "eza -T --icons --group-directories-first";
       ls = mkIf hasEza "eza -a --icons --group-directories-first";
       lsd = mkIf hasEza "eza -al --icons --group-directories-first";
-      lst = mkIf hasEza "eza -aT -L 5 --icons --group-directories-first";
-      lsta = mkIf hasEza "eza -aT --icons --group-directories-first";
+      lst = mkIf hasEza "eza -T -L 5 --icons --group-directories-first";
+      lsta = mkIf hasEza "eza -T --icons --group-directories-first";
 
       cat = mkIf hasBat "bat";
 
