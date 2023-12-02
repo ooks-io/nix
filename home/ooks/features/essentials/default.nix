@@ -10,5 +10,5 @@
     ./yt-dlp.nix
     ./playerctl.nix
   ];
-  xdg-portal.enable = true;
+  xdg.portal.enable = true;
 }
