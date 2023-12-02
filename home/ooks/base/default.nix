@@ -9,13 +9,10 @@ in
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
+    overlays = builtins.attrValues outputs.overlays;
     config = {
-      overlays = builtins.attrValues outputs.overlays;
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
-      permittedInsecurePackages = [
-        "openssl-1.1.1u"
-      ];
     };
   };
 
