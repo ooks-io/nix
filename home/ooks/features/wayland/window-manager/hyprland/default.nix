@@ -4,13 +4,30 @@
     ../../../essentials #import essential programs
     #./tty-init.nix
     ./binds.nix #hyprland keybindings
-    ./systemd-fix.nix #fix for systemd and hyprland
     ./environment-variables.nix #hyprland environment variables
     ];
 
+
+  xdg.portal = {
+    extraPortals = [ pkgs.inputs.hyprland.xdg-desktop-portal-hyprland ];
+    configPackages = [ pkgs.inputs.hyprland.hyprland ];
+  };
+
+  home.packages = with pkgs; [
+    inputs.hyprwm-contrib.grimblast
+    hyprpicker
+    ];
+    
   wayland.windowManager.hyprland = {
     enable = true;
-
+    package = pkgs.inputs.hyprland.hyprland;
+        systemd = {
+          enable = true;
+          extraCommands = lib.mkBefore [
+            "systemctl --user stop graphical-session.target"
+            "systemctl --user start hyprland-session.target"
+          ];
+        };
     settings = {
       general = {
         gaps_in = 10;
@@ -88,12 +105,12 @@
       exec = [
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/nix/walls/gruvbox/gruvbox-blank.png --mode fill"
+        "earbuds -d"
+        "eww open-many bar window-clock window-battery window-earbuds"
       ];
       
       exec-once = [
 	      "${pkgs._1password-gui}/bin/1password --silent"
-        "earbuds -d"
-        "eww open-many bar window-clock window-battery window-earbuds"
       ];
     };
   };
