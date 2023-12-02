@@ -9,7 +9,6 @@
     ./fish.nix
     ./pfetch.nix
     ./starship.nix
-    ./joshuto
     ./helix
   ];
   home.packages = with pkgs; [

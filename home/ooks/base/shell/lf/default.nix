@@ -1,5 +1,8 @@
 { pkgs, config, ... }:
-#TODO mkif wayland for previewer
+#TODO - mkif wayland for previewer
+#     - manage previewer dependencies better
+#     - ripdrag support
+#     - color parity with eza
 {
 
 xdg.configFile."lf/icons".source = ./icons;
