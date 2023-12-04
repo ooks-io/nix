@@ -105,12 +105,18 @@
       exec = [
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/nix/walls/gruvbox/gruvbox-blank.png --mode fill"
-        "earbuds -d"
-        "eww open-many bar window-clock window-battery window-earbuds"
       ];
       
-      exec-once = [
-	      "${pkgs._1password-gui}/bin/1password --silent"
+      exec-once = 
+        #let
+        #eww = "${pkgs.eww-wayland}/bin/eww";
+        #in 
+        [
+	        "${pkgs._1password-gui}/bin/1password --silent"
+         # "${eww} daemon & ${eww} open bar & ${eww} open window-clock & ${eww} open window-battery & ${eww} open window-earbuds"
+          "${pkgs.live-buds-cli}/bin/earbuds -d"
+          "eww daemon && eww open bar"
+          "eww open-many window-clock window-battery window-earbuds"
       ];
     };
   };

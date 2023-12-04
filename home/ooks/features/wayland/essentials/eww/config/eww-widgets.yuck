@@ -6,22 +6,11 @@
   (label
     :text "${TIME}"
     :class "text"
-    :halign "left"
+    :halign "start"
     :valign "center"
   )
 )
 
-;; Battery
-(defwidget widget-bat-bar []
-  (progress
-    :class "${BATTERY-COLOR}" 
-    :value "${BATTERY-PERCENTAGE}" 
-    :orientation "horizontal"
-    :valign "center"
-    :halign "center"
-    :tooltip "${BATTERY-PERCENTAGE}"
-  )
-)
 
 (defwidget widget-battery []
   (label
@@ -29,7 +18,7 @@
     :class "${BATTERY-COLOR}"
     :orientation "horizontal"
     :valign "center"
-    :halign "center"
+    :halign "end"
   )
 )
 
@@ -41,5 +30,13 @@
     :orientation "horizontal"
     :valign "center"
     :halign "center"
+  )
+)
+
+(defwidget bar-box []
+  (centerbox
+    (widget-clock)
+    (widget-earbuds)
+    (widget-battery)
   )
 )

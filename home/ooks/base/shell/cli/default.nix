@@ -1,9 +1,11 @@
 { pkgs, config, ... }: {
   imports = [
     ./lf
-    ./nix-index.nix
+    ./fzf.nix
     ./git.nix
+    ./bash.nix
     ./fish.nix
+    ./pfetch.nix
     ./starship.nix
   ];
   home.packages = with pkgs; [
@@ -37,14 +39,11 @@
     killall
     gcc
     acpi
-    pfetch
   ];
 
   programs = {
     btop.enable = true;
     eza.enable = true;
-    fzf.enable = true;
-    bash.enable = true;
     bat = {
       enable = true;
       config = {
@@ -60,10 +59,6 @@
         "--preview 'ea --icons --git --color always -T -L 3 {} | head -200'"
         "--exact"
       ];
-    };
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-    };
+    }
   };
 }

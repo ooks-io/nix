@@ -6,6 +6,7 @@ in
   imports = [
     inputs.nix-colors.homeManagerModule
     ./shell
+#    ./xdg.nix
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
@@ -38,6 +39,8 @@ in
       FLAKE = "$HOME/.dotfiles/nix";
     };
   };
+
+  xdg.portal.enable = true;
   
   colorscheme = lib.mkDefault colorSchemes.everforest;
   home.file.".colorscheme".text = config.colorscheme.slug;
