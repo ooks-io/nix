@@ -30,9 +30,9 @@ in {
       enable = true;
       defaultApplications = associations;
     };
-    usrDirs = {
+    userDirs = {
       enable = true;
-      creatDirectories = true;
+      createDirectories = true;
       extraConfig = {
           XDG_SCREENSHOT_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
       };

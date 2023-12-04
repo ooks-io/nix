@@ -1,11 +1,9 @@
 { pkgs, config, ... }: {
   imports = [
     ./lf
-    ./fzf.nix
     ./git.nix
     ./bash.nix
     ./fish.nix
-    ./pfetch.nix
     ./starship.nix
   ];
   home.packages = with pkgs; [
@@ -13,13 +11,13 @@
     
     # file utility
     duf
-    du-dus
+    du-dust
     fd
     ripgrep
 
     # archive
     zip
-    uzip
+    unzip
     unrar
     
     # file transfer
@@ -53,12 +51,12 @@
     };
     skim = {
       enable = true;
-      enableFishIntergration = true;
+      enableFishIntegration = true;
       defaultCommand = "rg --files --hidden";
       changeDirWidgetOptions = [
         "--preview 'ea --icons --git --color always -T -L 3 {} | head -200'"
         "--exact"
       ];
-    }
+    };
   };
 }
