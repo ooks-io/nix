@@ -7,7 +7,6 @@
     ./zathura.nix
     ./gammastep.nix
     ./cursor.nix
-    ./gimp.nix
     ./swaylock.nix
     ./eww
     ./foot.nix
@@ -22,6 +21,8 @@
     pkgs.qt6.qtwayland
     mpv
     gtk3
+    mimeo
+    waypipe
     pulseaudio
     pamixer
     slurp

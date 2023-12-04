@@ -5,6 +5,7 @@
     ./bash.nix
     ./fish.nix
     ./starship.nix
+    ./nix-index.nix
   ];
   home.packages = with pkgs; [
     bc # Calculator
@@ -49,13 +50,15 @@
         pager = "less -FR";
       };
     };
-    skim = {
+    fzf = {
       enable = true;
       enableFishIntegration = true;
-      defaultCommand = "rg --files --hidden";
       changeDirWidgetOptions = [
-        "--preview 'ea --icons --git --color always -T -L 3 {} | head -200'"
+        "--preview 'eza --icons {} | head -200'"
         "--exact"
+      ];
+      fileWidgetOptions = [
+        "--preview 'bat --color=always {}'"
       ];
     };
   };
