@@ -50,9 +50,15 @@
         pager = "less -FR";
       };
     };
+    direnv = {
+      enable = true;
+      nix-direnv = true;
+      enableFishIntegration = true;
+    };
     fzf = {
       enable = true;
       enableFishIntegration = true;
+      defaultCommand = "rg --files --hidden";
       changeDirWidgetOptions = [
         "--preview 'eza --icons {} | head -200'"
         "--exact"
