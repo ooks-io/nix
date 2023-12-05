@@ -8,6 +8,8 @@
     extraConfig = {
       gpg."ssh".program = "${pkgs._1password-gui}/bin/op-ssh-sign";
     };
+    ignores = [ ".direnv" "result" ];
+    lfs.enable = true;
   };
   
   home.packages = with pkgs; [
