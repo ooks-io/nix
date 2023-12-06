@@ -9,6 +9,8 @@ in
     enable = true;
     settings = {
       theme = "${colorscheme.slug}";
+      default_layout = "compact";
+      pane_frames = false;
       themes = {
         "${colorscheme.slug}" = {
           fg = "#${colors.base05}";
