@@ -6,6 +6,7 @@
     ./fish.nix
     ./starship.nix
     ./nix-index.nix
+    ./zellij.nix
   ];
   home.packages = with pkgs; [
     bc # Calculator
@@ -33,7 +34,6 @@
     lazygit # git uitlity
     comma # Install and run with ","
     tldr # Community maintained help pages
-    tmux # Terminal multiplexer
     progress
     killall
     gcc
@@ -52,17 +52,17 @@
     };
     direnv = {
       enable = true;
-      nix-direnv = true;
-      enableFishIntegration = true;
+      nix-direnv.enable = true;
     };
     fzf = {
       enable = true;
       enableFishIntegration = true;
       defaultCommand = "rg --files --hidden";
       changeDirWidgetOptions = [
-        "--preview 'eza --icons {} | head -200'"
+        "--preview 'eza --icons -L 3 -T --color always {} | head -200'"
         "--exact"
       ];
+      fileWidgetCommand = "rg --files";
       fileWidgetOptions = [
         "--preview 'bat --color=always {}'"
       ];
