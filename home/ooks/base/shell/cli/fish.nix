@@ -44,6 +44,26 @@ in
     };
     functions = {
       fish_greeting = "";
+      zellij_session_select = ''
+        if not set -q ZELLIJ
+        set -l ZJ_SESSIONS (zellij list-sessions | awk '{print $1}')
+        set -l NO_SESSIONS (count $ZJ_SESSIONS)
+
+        if test $NO_SESSIONS -gt 0
+            set -l SELECTED_SESSION (printf "%s\n" $ZJ_SESSIONS | sk --ansi)
+
+            if test -n "$SELECTED_SESSION"
+                zellij attach -c $SELECTED_SESSION
+            else
+                zellij
+            end
+        else
+            zellij
+        end
+    end
+
+      '';
+
       fish_flake_edit = ''
       cd $FLAKE
       hx $FLAKE
@@ -57,8 +77,11 @@ in
         bind --preset -M insert \ec skim_cd_widget
       '';
     };
-      # kitty integration
     interactiveShellInit =
+    # zellij auto start script
+      ''
+      zellij_session_select
+      '' +
       ''
         set --global KITTY_INSTALLATION_DIR "${pkgs.kitty}/lib/kitty"
         set --global KITTY_SHELL_INTEGRATION enabled

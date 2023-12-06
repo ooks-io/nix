@@ -7,7 +7,6 @@ in
 {
   programs.zellij = {
     enable = true;
-    enableFishIntegration = true;
     settings = {
       theme = "${colorscheme.slug}";
       themes = {
@@ -27,5 +26,4 @@ in
       };
     };
   };
-#  home.sessionVariable = ZELLIJ_AUTO_ATTACH = "1";
 }
