@@ -29,6 +29,7 @@ in
       hms = "home-manager --flake . switch";
 
       fe = mkIf hasHelix "cd $FLAKE; hx $FLAKE";
+      f = "cd $FLAKE";
 
       tree = mkIf hasEza "eza -T --icons --group-directories-first";
       ls = mkIf hasEza "eza -a --icons --group-directories-first";
