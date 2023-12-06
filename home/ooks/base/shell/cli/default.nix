@@ -54,7 +54,7 @@
       enable = true;
       nix-direnv.enable = true;
     };
-    fzf = {
+    skim = {
       enable = true;
       enableFishIntegration = true;
       defaultCommand = "rg --files --hidden";

@@ -9,7 +9,6 @@ in
     enable = true;
     enableFishIntegration = true;
     settings = {
-      session-serialization = 1;
       theme = "${colorscheme.slug}";
       themes = {
         "${colorscheme.slug}" = {
@@ -28,4 +27,5 @@ in
       };
     };
   };
+#  home.sessionVariable = ZELLIJ_AUTO_ATTACH = "1";
 }
