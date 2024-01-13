@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./video
+    ./image
+    ./music
+  ];
+}

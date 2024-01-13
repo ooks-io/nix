@@ -19,7 +19,7 @@ in
   packages = [ pkgs.home-manager ];
   };
 
-  home-manager.users.ooks = import ../../../../home/ooks/${config.networking.hostName}.nix;
+  home-manager.users.ooks = import ../../../../home/user/ooks/${config.networking.hostName};
 
   services.geoclue2.enable = true;
   security.pam.services = { swaylock = { }; };
