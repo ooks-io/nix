@@ -45,7 +45,7 @@ in
       terminal = config.home.sessionVariables.TERMINAL;
       browser = config.home.sessionVariables.BROWSER;
       editor = config.home.sessionVariables.EDITOR;
-      
+
       bright = "${brightnessScript}/bin/brightness";
       volume = "${volumeScript}/bin/volume";
 

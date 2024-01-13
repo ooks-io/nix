@@ -2,10 +2,8 @@
 
 {
   imports = [
-    ./opt/nvim
-    ./opt/shell
-    ./opt/desktop/hyprland
-    ./standard  
+    ./features/wayland/window-manager/hyprland
+    ./base
   ];
 
   colorscheme = inputs.nix-colors.colorSchemes.everforest;

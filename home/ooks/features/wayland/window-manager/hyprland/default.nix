@@ -7,6 +7,11 @@
     ./environment-variables.nix #hyprland environment variables
     ];
 
+  options.programs.desktop.desktopEnvironment.hyprland = {
+    enable = lib.mkEnableOption "Enable Hyprland window-manager";
+  };
+
+  config = lib.mkIf config.programs.desktop.desktopEnvironment.hyprland.enable {
 
   xdg.portal = {
     extraPortals = [ pkgs.inputs.hyprland.xdg-desktop-portal-hyprland ];
@@ -104,7 +109,7 @@
 
       exec = [
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-        "${pkgs.swaybg}/bin/swaybg -i ~/.dotfiles/nix/walls/gruvbox/gruvbox-blank.png --mode fill"
+        "${pkgs.swaybg}/bin/swaybg -i ${config.wallpaper} --mode fill"
       ];
       
       exec-once = 
@@ -119,5 +124,6 @@
           "eww open-many window-clock window-battery window-earbuds"
       ];
     };
+  };
   };
 }

@@ -1,12 +1,12 @@
-{ config, pkgs, ... }:
+{ config, lib, ... }:
 
 let
   inherit (config.colorscheme) colors;
 in
 
 {
-  home.sessionVariables = { TERMINAL = "foot"; };
-
+options.programs.terminal.foot.enable = lib.mkEnableOption "foot terminal"; 
+config = lib.mkIf config.programs.terminal.foot.enable {
   programs.foot = {
     enable = true;
     server.enable = true;
@@ -55,4 +55,5 @@ in
       };
     };
   };
+};
 }

@@ -38,6 +38,9 @@
     killall
     gcc
     acpi
+
+    # Nix tooling
+    alejandra
   ];
 
   programs = {

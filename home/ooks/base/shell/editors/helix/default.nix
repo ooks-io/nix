@@ -1,20 +1,42 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 let
+  #cfg = config.programs.console.editor.helix;
   inherit (config) colorscheme;
 in
 {
-  home.sessionVariables.COLORTERM = "truecolor";
-  home.sessionVariables.EDITOR = "hx";
-  home.sessionVariables.VISUAL = "hx";
+
+  imports = [
+    ./languages.nix
+  ];
   
-
-  home.packages = with pkgs; [
-    marksman
-    nil
-  ];    
-
+  home.sessionVariables = {
+    EDITOR = "hx";
+    VISUAL = "hx";
+  };
+  
   programs.helix = {
     enable = true;
+    package = 
+      inputs.helix.packages.${pkgs.system}.default.overrideAttrs (self: {
+            makeWrapperArgs = with pkgs;
+              self.makeWrapperArgs
+              or []
+              ++ [
+                "--suffix"
+                "PATH"
+                ":"
+                (lib.makeBinPath [
+                  clang-tools
+                  marksman
+                  nil
+                  nodePackages.bash-language-server
+                  nodePackages.vscode-css-languageserver-bin
+                  nodePackages.vscode-langservers-extracted
+                  shellcheck
+                ])
+              ];
+          });
+           
     settings = {
       theme = colorscheme.slug;
       editor = {
@@ -22,6 +44,8 @@ in
         middle-click-paste = false;
         line-number = "relative";
         indent-guides.render = true;
+        true-color = true;
+        cursorline = true;
         cursor-shape = {
           normal = "block";
           insert = "bar";
@@ -34,9 +58,16 @@ in
         };
         lsp = {
           display-messages = true;
+          display-inlay-hints = true;
+        };
+        keys.normal.space.u = {
+          f = ":format";
+          w = ":set whitespace.render all";
+          W = ":set whitespace.render none";
         };
       };
     };
     themes = import ./theme.nix { inherit colorscheme; };
   };
 }
+

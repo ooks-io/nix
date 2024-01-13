@@ -1,17 +1,27 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ./mako.nix
-    ./kitty.nix
     ./firefox.nix
     ./zathura.nix
     ./gammastep.nix
     ./cursor.nix
     ./swaylock.nix
     ./eww
-    ./foot.nix
+    ./terminal
   ];
 
+  programs.desktop.terminal = {
+    foot = {
+      enable = true;
+      default = true;
+    };
+    kitty = {
+      enable = true;
+    };
+  };
+
+  
   xdg.mimeApps.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   home.packages = with pkgs; [
@@ -19,7 +29,7 @@
     libnotify
     linux-firmware
     pkgs.qt6.qtwayland
-    mpv
+    imv
     gtk3
     mimeo
     waypipe
@@ -38,8 +48,8 @@
     MOZ_ENABLE_WAYLAND = 1;
     QT_QPA_PLATFORM = "wayland";
     LIBSEAT_BACKEND = "logind";
+    TERMINAL = "foot";
   };
-
 
 
 

@@ -17,9 +17,14 @@
       };
     
       hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+        url = "github:hyprwm/hyprland";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+      helix = {
+        url = "github:SoraTenshi/helix/new-daily-driver";
+        inputs.nixpkgs.follows = "nixpkgs"; 
+      };
   };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
