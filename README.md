@@ -3,45 +3,6 @@
 
 # Home manager Config
 
-├── profile
-│  ├── base.nix
-├── programs
-│  ├── desktop
-│  │  ├── appearance
-│  │  │  ├── cursor.nix
-│  │  │  ├── default.nix
-│  │  │  ├── fonts.nix
-│  │  │  ├── gtk.nix
-│  │  │  └── qt.nix
-│  │  ├── browser
-│  │  │  ├── brave
-│  │  │  ├── chrome
-│  │  │  ├── firefox
-│  │  │  └── default.nix
-│  │  ├── communication
-│  │  │  ├── discord
-│  │  │  ├── irc
-│  │  │  ├── matrix
-│  │  │  ├── teams
-│  │  │  └── default.nix
-│  ├── shell
-│  │  ├── cli
-│  │  │  ├── bash.nix
-│  │  │  ├── fish.nix
-│  │  │  ├── git.nix
-│  │  │  ├── lf.nix
-│  │  │  ├── starship.nix
-│  │  │  ├── tmux.nix
-│  │  │  └── zsh.nix
-│  │  ├── editor
-│  │  │  ├── helix.nix
-│  │  │  └── nvim.nix
-│  └── default.nix
-└── user
-   ├── ooks
-   │  └── ookst480s
-   │     └── default.nix
-
 ## Structure
 The directories are structured in to a few catagories:
 
